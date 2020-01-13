@@ -7,23 +7,23 @@ version = strcat({'_v'},datestr(date,'yyyymmdd'))
 %% Version control and database paths
 FileNames = struct;
 % Current PanGEM
-FileNames.PanGEM_Path = sprintf('%s','CBIOMES/Pangenomes/Prochlorococcus/PanGEM_pro_20200105.xlsx');
+FileNames.PanGEM_Path = '/data/GEM/PanGEM.mat';
 % Current strain models
-FileNames.StrMod_Path = 'StrMods_v20200105.mat';
+FileNames.StrMod_Path = '/data/GEM/targStrMod3.mat';
 % Current OGTDat
-FileNames.OGTDat_Path = 'CBIOMES/Data/OGT/OGTDat.csv';
+FileNames.OGTDat_Path = '/data/db/OGTDat.csv';
 % Cruise data
-FileNames.CruiseDB_filename = 'CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/MESO-SCOPE.csv';
+FileNames.CruiseDB_filename = 'data/envData/MESO-SCOPE.csv';
 % HyperPro profiles
-FileNames.IrrDat_fileName = 'CBIOMES/Data/Environmental_Data/HyperPro/MESO-SCOPE/ASCII/IrrDat.mat';
+FileNames.IrrDat_fileName = 'data/envData/IrrDat.mat';
 % TpDat path
-FileNames.TpDat_fileName = 'CBIOMES/Pangenomes/Prochlorococcus/TpDat.csv';
+FileNames.TpDat_fileName = 'data/db/TpDat.csv';
 % PhysOpt and PigOpt constraints path
-FileNames.PhysOptPigOptConstraints_fileName = 'CBIOMES/Pangenomes/Prochlorococcus/BOFConstraints.csv';
+FileNames.PhysOptPigOptConstraints_fileName = 'data/db/BOFConstraints.csv';
 % PigDB path
-FileNames.PigDB_fileName = 'CBIOMES/Data/Pigments/AbsorptionDatabase.csv';
+FileNames.PigDB_fileName = 'data/db/AbsorptionDatabase.csv';
 % Destination for solution
-FileNames.destination_fileName = strcat('CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/FullSolution',version,'.mat');
+FileNames.destination_fileName = strcat('data/output/FullSolution',version,'.mat');
 %% Gridding
 Gridding = struct;
 % Stations
