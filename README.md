@@ -1,2 +1,2 @@
-# MSE_Pro
+# mse
 MSE application for Prochlorococcus using MESO-SCOPE dataset
