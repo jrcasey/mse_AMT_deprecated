@@ -43,7 +43,7 @@ load(FileNames.IrrDat_fileName);
 IrrDat3a = reshape([IrrDat2{:}],numel(Gridding.depthVec),numel(Gridding.lambdaVec),Gridding.nStations);
 CruiseData.PAR = squeeze(nansum(IrrDat3a,2))';
 % Temporary!! Normalize to local noon. For now just use the maximum Irr
-NoonScalar = sum(CruiseData.PAR,2)./max(sum(CruiseData.PAR,2))
+NoonScalar = sum(CruiseData.PAR,2)./max(sum(CruiseData.PAR,2));
 CruiseData.PAR = CruiseData.PAR./repmat(NoonScalar,1,Gridding.nZ);
 for i = 1:Gridding.nZ
     IrrDat3(i,:,:) = squeeze(IrrDat3a(i,:,:))./repmat(NoonScalar',numel(Gridding.lambdaVec),1);
