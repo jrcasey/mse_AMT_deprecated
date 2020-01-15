@@ -39,7 +39,7 @@ Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
 Gridding.minZ = 15;
 Gridding.maxZ = 181;
-Gridding.intervalZ = 10;
+Gridding.intervalZ = 5;
 Gridding.depthVec = Gridding.minZ:Gridding.intervalZ:Gridding.maxZ;
 Gridding.nZ = numel(Gridding.depthVec);
 % Wavelength (nm)
@@ -67,7 +67,7 @@ nStr = numel(strNameVec);
 idxMat = zeros(Gridding.nStations,Gridding.nZ,nStr);
 nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
-job_array_idx = getenv('SLURM_ARRAY_TASK_ID');
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
@@ -83,6 +83,9 @@ tic;
 [Solution] = MESO_SCOPE_Simulation(strName, station, depth, Gridding, FileNames, Options);
 dt = toc;
 Solution.runtime = dt;
+Solution.strName = strName;
+Solution.z = depth;
+Solution.station = station;
 
 if ~Options.saveStrMod
     Solution.StrMod = [];
@@ -90,5 +93,6 @@ end
 
 %% Save solution
 %save(cell2str(FileNames.destination_fileName),'FullSolution');
+save(strcat('data/output/','Solution_',num2str(job_array_idx),'.mat'),'Solution')
 
-
+strcat('data/output/','Solution_',num2str(job_array_idx),'.mat')
