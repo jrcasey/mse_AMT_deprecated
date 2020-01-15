@@ -72,8 +72,6 @@ job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
 %% Run simulation
-
-
 station = Gridding.stationsVec(i);
 depth = Gridding.depthVec(j);
 strName = strNameVec{k};
