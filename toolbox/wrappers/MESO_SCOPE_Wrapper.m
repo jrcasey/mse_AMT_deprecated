@@ -39,7 +39,7 @@ Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
 Gridding.minZ = 15;
 Gridding.maxZ = 181;
-Gridding.intervalZ = 10;
+Gridding.intervalZ = 5;
 Gridding.depthVec = Gridding.minZ:Gridding.intervalZ:Gridding.maxZ;
 Gridding.nZ = numel(Gridding.depthVec);
 % Wavelength (nm)

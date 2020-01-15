@@ -7,10 +7,11 @@
 #SBATCH --time=XX:XX:XX
 #SBATCH --mem=
 #SBATCH --mail-user=jrcasey@mit.edu
-#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-type=ALL
 #SBATCH --workdir="path/to/mse"
 #SBATCH --output=mse_MESO_SCOPE-%j.out
 #SBATCH --error==mse_MESO_SCOPE-%j.error
+#SBATCH --array 1-19584
 
 
 . /path/to/modules
