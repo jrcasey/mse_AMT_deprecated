@@ -1,5 +1,7 @@
 %% MESO-SCOPE Simulation
 % Runs and analyzes the MSE simulation for the MESO-SCOPE cruise.
+%% set root dir
+cd Documents/MATLAB/GitHub/mse/
 
 %% Version
 version = strcat({'_v'},datestr(date,'yyyymmdd'))
@@ -7,11 +9,15 @@ version = strcat({'_v'},datestr(date,'yyyymmdd'))
 %% Version control and database paths
 FileNames = struct;
 % Current PanGEM
-FileNames.PanGEM_Path = '/data/GEM/PanGEM.mat';
+FileNames.PanGEM_Path = 'data/GEM/PanGEM.mat';
+% Organism database
+FileNames.orgDB_Path = 'data/db/orgDatabase.csv';
 % Current strain models
-FileNames.StrMod_Path = '/data/GEM/targStrMod3.mat';
+FileNames.StrMod_Path = 'data/GEM/targStrMod3.mat';
+% List of strains to be analyzed
+FileNames.strainList_Path = 'data/db/strainList.mat';
 % Current OGTDat
-FileNames.OGTDat_Path = '/data/db/OGTDat.csv';
+FileNames.OGTDat_Path = 'data/db/OGTDat.csv';
 % Cruise data
 FileNames.CruiseDB_filename = 'data/envData/MESO-SCOPE.csv';
 % HyperPro profiles
@@ -24,6 +30,7 @@ FileNames.PhysOptPigOptConstraints_fileName = 'data/db/BOFConstraints.csv';
 FileNames.PigDB_fileName = 'data/db/AbsorptionDatabase.csv';
 % Destination for solution
 FileNames.destination_fileName = strcat('data/output/FullSolution',version,'.mat');
+
 %% Gridding
 Gridding = struct;
 % Stations
@@ -51,8 +58,9 @@ Options.maxIter_physOpt = 1000;
 %Options.saveCruiseData = true;
 
 %% Choose a strain
+% load orgDatabase
+orgDatabase = readtable(FileNames.orgDB_Path,'ReadVariableNames',true,'Delimiter',',');
 strNameVec = [{'MED4'},{'MIT9313'},{'SB'}];
-%strNameVec = [{'SB'}];
 nStr = numel(strNameVec);
 
 %% Run simulation

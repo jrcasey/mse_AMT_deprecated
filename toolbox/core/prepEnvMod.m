@@ -1,4 +1,4 @@
-function newMod = prepEnvMod_OLD(model)
+function newMod = prepEnvMod(model)
 %% Prepare strain model for environmental simulation
 % Sets constraints and S matrix coefficients for use within a full
 % simulation based on environmental data from either a cruise or from
@@ -28,7 +28,7 @@ function newMod = prepEnvMod_OLD(model)
 strName = model.id;
 
 % Gather strain information
-fileName = 'CBIOMES/Pangenomes/Prochlorococcus/orgDatabase.csv';
+fileName = 'data/db/orgDatabase.csv';
 orgDatabase = readtable(fileName,'ReadVariableNames',true,'Delimiter',',');
 orgInd = find(strcmp(orgDatabase.Strain,strName));
 ecotype = orgDatabase.Ecotype{orgInd};
