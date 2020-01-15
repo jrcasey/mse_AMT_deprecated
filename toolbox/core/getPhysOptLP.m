@@ -22,7 +22,7 @@ end
 
 % Get ecotype index
 strName = StrMod.id;
-fileName = 'CBIOMES/Pangenomes/Prochlorococcus/orgDatabase.csv';
+fileName = 'data/db/orgDatabase.csv';
 orgDatabase = readtable(fileName,'ReadVariableNames',true,'Delimiter',',');
 orgInd = find(contains(orgDatabase.Strain,strName));
 ecotype = orgDatabase.Ecotype{orgInd};

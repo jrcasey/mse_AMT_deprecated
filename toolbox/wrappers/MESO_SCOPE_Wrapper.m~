@@ -83,9 +83,6 @@ tic;
 [Solution] = MESO_SCOPE_Simulation(strName, station, depth, Gridding, FileNames, Options);
 dt = toc;
 Solution.runtime = dt;
-Solution.strName = strName;
-Solution.z = depth;
-Solution.station = station;
 
 if ~Options.saveStrMod
     Solution.StrMod = [];

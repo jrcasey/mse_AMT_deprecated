@@ -41,7 +41,7 @@ end
 
 %% Get CTD data
 % get file list
-fileList_dir = 'CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/CTD/fileList.csv';
+fileList_dir = 'data/envData/CTD/fileList.csv';
 fileList = readtable(fileList_dir,'Delimiter',',','ReadVariableNames',false);
 % align stations to files
 for i = 1:nStations
@@ -50,7 +50,7 @@ end
 
 for i = 1:nStations
     % import ctd data
-    fileName = strcat('CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/CTD/',fileList.Var1{fileList_station_ind(i)});
+    fileName = strcat('data/envData/CTD/',fileList.Var1{fileList_station_ind(i)});
     CTD = readtable(fileName,'Format','%f %f %f %f %f %f %f %f %f','Delimiter','tab','ReadVariableNames',true,'HeaderLines',2,'TreatAsEmpty','*******' );
     CTD.Properties.VariableNames = [{'Depth'},{'T'},{'S'},{'O2'},{'Chl'},{'Beam_Atten'},{'Junk1'},{'Junk2'},{'Junk3'}];
     varNames = CTD.Properties.VariableNames([2:6]);
