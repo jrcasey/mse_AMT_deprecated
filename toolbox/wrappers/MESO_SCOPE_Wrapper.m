@@ -67,7 +67,7 @@ nStr = numel(strNameVec);
 idxMat = zeros(Gridding.nStations,Gridding.nZ,nStr);
 nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
-job_array_idx = getenv('SLURM_ARRAY_TASK_ID');
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
@@ -93,5 +93,6 @@ end
 
 %% Save solution
 %save(cell2str(FileNames.destination_fileName),'FullSolution');
+save(strcat('data/output/','Solution_',num2str(job_array_idx),'.mat'),'Solution');
 
-
+% change path to nobackup/jrcasey/ for saving the full output.
