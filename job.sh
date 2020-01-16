@@ -15,7 +15,7 @@
 
 
 . /path/to/modules
-module load matlab-2019b 
+module load matlab-2019a 
 WORKDIR=/path/to/mse
 MATLAB=/path/to/matlab/bin
 OPTIONS="-nodesktop -nosplash"
