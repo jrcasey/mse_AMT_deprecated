@@ -1,7 +1,7 @@
 %% MESO-SCOPE Simulation
 % Runs and analyzes the MSE simulation for the MESO-SCOPE cruise.
 %% set root dir
-cd Documents/MATLAB/GitHub/mse/
+%cd Documents/MATLAB/GitHub/mse/
 
 %% Version
 version = strcat({'_v'},datestr(date,'yyyymmdd'))
