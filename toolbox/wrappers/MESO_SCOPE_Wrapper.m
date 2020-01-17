@@ -2,7 +2,9 @@
 % Runs and analyzes the MSE simulation for the MESO-SCOPE cruise.
 %% set root dir
 %cd Documents/MATLAB/GitHub/mse/
-
+%addpath '/nfs/cnhlab001/cnh/projects/jrcasey/mse/test/mosek/9.1/toolbox/r2015a'	
+addpath(genpath('/nfs/cnhlab001/cnh/projects/jrcasey/mse/'))	
+	
 %% Version
 version = strcat({'_v'},datestr(date,'yyyymmdd'))
 
