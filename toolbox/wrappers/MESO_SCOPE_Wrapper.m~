@@ -4,14 +4,14 @@
 %cd Documents/MATLAB/GitHub/mse/
 %addpath '/nfs/cnhlab001/cnh/projects/jrcasey/mse/test/mosek/9.1/toolbox/r2015a'	
 addpath(genpath('~/'));	
-cd ~/mse/	
+	
 %% Version
 version = strcat({'_v'},datestr(date,'yyyymmdd'))
 
 %% Version control and database paths
 FileNames = struct;
 % Current PanGEM
-FileNames.PanGEM_Path = 'data/GEM/PanGEM.mat';
+FileNames.PanGEM_Path = 'mse/data/GEM/PanGEM.mat';
 % Organism database
 FileNames.orgDB_Path = 'data/db/orgDatabase.csv';
 % Current strain models
@@ -31,7 +31,7 @@ FileNames.PhysOptPigOptConstraints_fileName = 'data/db/BOFConstraints.csv';
 % PigDB path
 FileNames.PigDB_fileName = 'data/db/AbsorptionDatabase.csv';
 % Destination for solution
-FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.mat');
+FileNames.destination_fileName = strcat('data/output/FullSolution',version,'.mat');
 
 %% Gridding
 Gridding = struct;
@@ -93,6 +93,6 @@ end
 
 %% Save solution
 %save(cell2str(FileNames.destination_fileName),'FullSolution');
-save(strcat('/nobackup1/jrcasey/','Solution_',num2str(job_array_idx),'.mat'),'Solution');
+save(strcat('data/output/','Solution_',num2str(job_array_idx),'.mat'),'Solution');
 
 % change path to nobackup/jrcasey/ for saving the full output.
