@@ -1,5 +1,6 @@
 %% MESO-SCOPE Simulation
 % Runs and analyzes the MSE simulation for the MESO-SCOPE cruise.
+% Set up currently to run on Centos7
 %% set root dir
 %cd Documents/MATLAB/GitHub/mse/
 %addpath '/nfs/cnhlab001/cnh/projects/jrcasey/mse/test/mosek/9.1/toolbox/r2015a'	
@@ -60,13 +61,13 @@ Options.maxIter_physOpt = 1000;
 %Options.saveCruiseData = true;
 
 %% Get strains to analyze
-load strainList
-strNameVec = strList;
-nStr = numel(strNameVec);
+load(FileNames.strainList_Path);
+Gridding.strNameVec = strList;
+Gridding.nStr = numel(Gridding.strNameVec);
 
 %% Find index from SLURM
 % preallocate a 3d matrix of dimensions nStations, nZ, nStr
-idxMat = zeros(Gridding.nStations,Gridding.nZ,nStr);
+idxMat = zeros(Gridding.nStations,Gridding.nZ,Gridding.nStr);
 nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
@@ -76,7 +77,7 @@ job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 %% Run simulation
 station = Gridding.stationsVec(i);
 depth = Gridding.depthVec(j);
-strName = strNameVec{k};
+strName = Gridding.strNameVec{k};
 
 %Solution = struct;
 tic;
