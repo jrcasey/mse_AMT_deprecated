@@ -1,7 +1,7 @@
 %% MESO-SCOPE Simulation
 % Runs and analyzes the MSE simulation for the MESO-SCOPE cruise.
 % Set up currently to run on Centos7
-%% set root dir
+%% set root dir (for server only)
 %cd Documents/MATLAB/GitHub/mse/
 %addpath '/nfs/cnhlab001/cnh/projects/jrcasey/mse/test/mosek/9.1/toolbox/r2015a'	
 addpath(genpath('~/'));	

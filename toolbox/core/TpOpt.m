@@ -35,9 +35,10 @@ S = TpDat.S;
 for i = 1:nTpRxns
     [ks_dl(i), ks_pl(i)] = paramsArmstrong(Vmax(i), kcat(i), n(i), r, A(i), D(i), u); % mol m-3
     v(i) = uptakeArmstrong(S(i),Vmax(i),ks_dl(i), ks_pl(i)); % mole cell-1 s-1
-    % for j = 1:numel(S2)
-    %    v(i,j) = uptakeArmstrong(S2(j),Vmax(i),ks_dl(i), ks_pl(i)); % mole cell-1 s-1
-    % end
+%     for j = 1:numel(S2)
+%        v(i,j) = uptakeArmstrong(S2(j),Vmax(i),ks_dl(i), ks_pl(i)); % mole cell-1 s-1
+%        v_FBA(i,j) = 1000 .* v(i,j) .* (1 ./ q) .* 3600;
+%     end
 end
 
 

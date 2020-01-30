@@ -43,9 +43,9 @@ b(2) = Constraints.(ecotype)(1); %Pub
 b(3) = 0;
 b(4) = 0;
 % Assign Rlb and Rub vectors
-A(3,A_PigInd(1)) = Constraints.(ecotype)(3);
+A(3,A_PigInd(1)) = Constraints.(ecotype)(3); % Rlb
 A(3,A_PigInd(2)) = -1;
-A(4,A_PigInd(1)) = -Constraints.(ecotype)(4);
+A(4,A_PigInd(1)) = -Constraints.(ecotype)(4); % Rub
 A(4,A_PigInd(2)) = 1;
 
 % xlb and xub
