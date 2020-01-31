@@ -4,11 +4,14 @@ scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:/nfs/cnh
 
 ## Copying all results files to a local directory
 scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key -r jrcasey@eofe7.mit.edu:/nobackup1/jrcasey/. ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/mse_Results/
+
 ### Clean up the scratch (while logged in)
 rm -r /nobackup1/jrcasey/*
+
 ### Clean up mse (while logged in)
 rm ~/mse/*.out
 rm ~/mse/*.err
+find . -name "matlab_crash*" -exec rm {} \;
 
 # Connecting to the MIT server
 ssh -F $HOME/eofe-cluster/linux/config eofe7.mit.edu
