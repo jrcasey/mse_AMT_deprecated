@@ -7,6 +7,6 @@ load FileNames
 load CruiseData
 load PanGEM
 
-[FullSolution] = get_MESO_SCOPE_Results(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
+[FullSolution] = get_MESO_SCOPE_Results_server(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
 
 save('/data/output/FullSolution.mat','FullSolution');

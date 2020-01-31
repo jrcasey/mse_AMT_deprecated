@@ -1,4 +1,4 @@
-function [FullSolution] = get_MESO_SCOPE_Results(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData)
+function [FullSolution] = get_MESO_SCOPE_Results_server(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData)
 % Retrieves all individual solutions from the server and concatenates them
 % into a single structure. Also saves Gridding and CruiseData into the same
 % structure for analysis. 
@@ -35,7 +35,7 @@ if nFiles ~= Gridding.nStations .* Gridding.nZ .* Gridding.nStr
 end
 
 % Preallocate matrices to structure (need to load a solution to do this)
-load('/data/output/Solution_1.mat'))
+load Solution_1
 for a = 1:Gridding.nStr
     FullSolution.(Gridding.strNameVec{a}).Growth = zeros(Gridding.nStations,Gridding.nZ);
     nFluxes = numel(Solution.Fluxes);
