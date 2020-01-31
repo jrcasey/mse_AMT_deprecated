@@ -9,4 +9,4 @@ load PanGEM
 
 [FullSolution] = get_MESO_SCOPE_Results_server(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
 
-save('/data/output/FullSolution.mat','FullSolution');
+save('~/mse/data/output/FullSolution.mat','FullSolution');
