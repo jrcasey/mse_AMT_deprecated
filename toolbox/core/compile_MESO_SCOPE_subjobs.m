@@ -1,10 +1,11 @@
 %% Post processing on server
 cd ~/mse/
+addpath(genpath('~/mse'))
 ResultsDirectory = '/nobackup1/jrcasey/';
-load('/data/output/Gridding.mat');
-load('/data/output/FileNames.mat');
-load('/data/output/CruiseData.mat');
-load('/data/output/PanGEM.mat');
+load Gridding
+load FileNames
+load CruiseData
+load PanGEM
 
 [FullSolution] = get_MESO_SCOPE_Results(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
 
