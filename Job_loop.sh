@@ -12,3 +12,15 @@ for i in $(seq $START $STEP $END) ; do
     sbatch --array=${JSTART}-${JEND} -p sched_mit_darwin2 --time=12:00:00 job2.sh
     sleep $SLEEP
 done
+
+# Run post-processing
+cd ~/mse/
+module load mit/matlab/2019a
+matlab -nodesktop -nosplash -nojvm < toolbox/core/compile_MESO_SCOPE_subjobs.m
+
+# Clean up
+cd ~/
+find . -name "matlab_crash*" -exec rm {} \;
+rm ~/mse/*.out
+rm ~/mse/*.err
+rm -r /nobackup1/jrcasey/*

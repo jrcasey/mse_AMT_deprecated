@@ -29,7 +29,11 @@ A = 1;
 OGT_rate = exp(-Ea./(R.*(OGT)));
 InSitu_rate = exp(-Ea./(R.*(T)));
 
-TCorr = min([InSitu_rate ./ OGT_rate 1]); % temperature correction, with super opimal temperatures forced to 1
-
+ % temperature correction, with super opimal temperatures forced to 0
+if T > OGT
+    TCorr = 0;
+else
+    TCorr = InSitu_rate ./ OGT_rate;
+end
 
 end
