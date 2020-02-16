@@ -27,13 +27,14 @@ Ea = 5.2733e4; %J mol-1
 R = 8.314;
 A = 1;
 OGT_rate = exp(-Ea./(R.*(OGT)));
-InSitu_rate = exp(-Ea./(R.*(T)));
-
- % temperature correction, with super opimal temperatures forced to 0
-if T > OGT
-    TCorr = 0;
-else
-    TCorr = InSitu_rate ./ OGT_rate;
+%InSitu_rate = exp(-Ea./(R.*(T)));
+InSitu_rate = exp(-Ea./(R.*(T))).*(1-exp(T-(OGT+2)));
+if InSitu_rate <0
+    InSitu_rate = 0;
 end
+
+% temperature correction
+TCorr = InSitu_rate ./ OGT_rate;
+
 
 end

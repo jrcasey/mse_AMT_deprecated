@@ -2,8 +2,12 @@ function CruiseDat = getCruiseData(CruiseDB, depthVec)
 %% Standardize MESO-SCOPE Data
 
 Data = CruiseDB;
+% target fields (nutrients and cell counts for now)
+varNames = [{'Nitrate'},{'Nitrite'},{'Ammonia'},{'Orthophosphate'},{'Fe2'},...
+    {'Zn2'},{'Cadmium'},{'Ni'},{'Copper'},{'Pb'},{'Mn'},{'Cobalt_ion'},...
+    {'Pro'},{'Syn'},{'Euk'},{'Hbac'}];
 
-varNames = Data.Properties.VariableNames(8:19); % just the nutrients for now
+%varNames = Data.Properties.VariableNames(8:19); % just the nutrients for now
 % Find and index stations
 uStations = unique(Data.Station);
 nStations = numel(uStations);
