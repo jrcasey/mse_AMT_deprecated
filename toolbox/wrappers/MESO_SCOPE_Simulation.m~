@@ -167,33 +167,33 @@ vOut = nan(numel(vOut),1);
 end
 
 % Store growth rates for each model version
-sol1 = solveLP(StrMod1,1); % Unacclimated, unconditioned
+sol1 = solveLP(StrMod1,1);
 if sol1.stat==1
     Solution.StrMod1_growth = -sol1.f;
 else
     Solution.StrMod1_growth = NaN;
 end
-sol2 = solveLP(StrMod2,1); % Unacclimated, conditioned
+sol2 = solveLP(StrMod2,1);
 if sol2.stat==1
     Solution.StrMod2_growth = -sol2.f;
 else
     Solution.StrMod2_growth = NaN;
 end
-sol3 = solveLP(StrMod3,1); % Tp acclimated, conditioned
+sol3 = solveLP(StrMod3,1);
 if sol1.stat==1
     Solution.StrMod3_growth = -sol3.f;
 else
     Solution.StrMod3_growth = NaN;
 end
-sol4 = solveLP(StrMod4,1); % Tp and MM acclimated, conditioned
+sol4 = solveLP(StrMod4,1);
 if sol1.stat==1
     Solution.StrMod4_growth = -sol4.f;
 else
     Solution.StrMod4_growth = NaN;
 end
-sol5 = solveLP(StrMod4,1); % Tp and MM acclimated, Temperature corrected, conditioned
+sol5 = solveLP(StrMod4,1);
 if sol5.stat==1
-    Solution.StrMod5_growth = -sol5.f.*TCorr;
+    Solution.StrMod5_growth = -sol1.f.*T;
 else
     Solution.StrMod1_growth = NaN;
 end
