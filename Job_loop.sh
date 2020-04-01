@@ -1,7 +1,7 @@
 #!/bin/bash
 START=1
-END=19584
-STEP=408
+END=61440
+STEP=640
 SLEEP=600 #Just over 11 Minutes (in seconds)
 
 
@@ -14,9 +14,9 @@ for i in $(seq $START $STEP $END) ; do
 done
 
 # Run post-processing
-cd ~/mse/
+cd ~/mse_AMT/
 module load mit/matlab/2019a
-matlab -nodesktop -nosplash -nojvm < toolbox/core/compile_MESO_SCOPE_subjobs.m
+matlab -nodesktop -nosplash -nojvm < toolbox/core/compile_AMT_subjobs.m
 
 # Clean up
 cd ~/

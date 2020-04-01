@@ -81,7 +81,7 @@ strName = Gridding.strNameVec{k};
 
 %Solution = struct;
 tic;
-[Solution] = MESO_SCOPE_Simulation(strName, station, depth, Gridding, FileNames, Options);
+[Solution] = AMT_Simulation(strName, station, depth, Gridding, FileNames, Options);
 dt = toc;
 Solution.runtime = dt;
 Solution.strName = strName;

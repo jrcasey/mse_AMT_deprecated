@@ -7,7 +7,7 @@
 module load mit/matlab/2019a
 echo ${SLURM_ARRAY_TASK_ID}
 
-cd /home/jrcasey/mse/
+cd /home/jrcasey/mse_AMT/
 
-matlab -nodesktop -nosplash -nojvm < toolbox/wrappers/MESO_SCOPE_Wrapper.m
+matlab -nodesktop -nosplash -nojvm < toolbox/wrappers/AMT_Wrapper.m
 sleep 3

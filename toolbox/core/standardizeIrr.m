@@ -58,12 +58,12 @@ Data = IrrDat.Data;
 
 for i = 1:numel(Data);
     clear X Xg Y Yg Xg2 Yg2 V Xq Yq Xq2 Yq2 F zi
-    X = IrrDat.Depth{i};
+    X = IrrDat.Depth;
     Xg = linspace(min(X),max(X),numel(X));
     Y = IrrDat.Lambda;
     Yg = linspace(min(Y),max(Y),numel(Y));
     [Xg2,Yg2] = ndgrid(Xg,Yg);
-    V = table2array(Data{i});
+    V = Data{i};
     V(isnan(V)) = 0;
     Xq = linspace(minDepth,maxDepth,numel(depthVec));
     %Yq = linspace(348,804,numel(348:bandWidth:804));
@@ -75,16 +75,15 @@ for i = 1:numel(Data);
     Data2{i} = zi;
 end
 
-%% Convert microW cm-2 nm-1 to micromoles photons m-2 s-1
+%% Convert W m-2 nm-1 to micromoles photons m-2 s-1
 % solve photon energies (J mol-1)
 c = 3.0e8; % speed of light (m s-1)
 planck = 6.63e-34; % planck's constant (J s)
 avogadro = 6.02e23; % Avogadro's number (mol-1)
 Elambda = avogadro*c*planck./(Yq./1e9); % J mol-1
 for i = 1:numel(Data2)
-    temp = Data2{i} .* 1e-6 .* 10000; % W m-2 nm-1
     % convert to mmol of photons m-2 h-1
-    Data3{i} = (bandWidth .* 1e6 .* temp .* (1./1000) .* (3600)) ./ repmat(Elambda,size(temp,1),1); % depth x wavelength
+    Data3{i} = (bandWidth .* 1e6 .* Data2{i} .* (1./1000) .* (3600)) ./ repmat(Elambda,size(Data2{i},1),1); % depth x wavelength
 end
 
 IrrDat2 = Data3; % mmol photons m-2 h-1;

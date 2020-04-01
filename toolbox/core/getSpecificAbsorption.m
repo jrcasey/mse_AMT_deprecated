@@ -14,6 +14,8 @@ if ~isempty(find(strcmp('x___lambda',PigDBPigs)))
     PigDB.lambda = PigDB.x___lambda;
 end
 
+maxLambdaInd = find(PigDB.lambda == max(lambda));
+PigDB(maxLambdaInd+1:end,:) = [];
 % get pigs indices
 for i = 1:nPigs
     PigDBPigs_ind(i) = find(strcmp(PigsIncluded{i},PigDBPigs));

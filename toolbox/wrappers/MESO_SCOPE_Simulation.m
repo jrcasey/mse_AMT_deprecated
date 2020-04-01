@@ -1,4 +1,4 @@
-function [Solution] = MESO_SCOPE_Simulation(strName, station, depth, Gridding, FileNames, Options)
+function [Solution] = AMT_Simulation(strName, station, depth, Gridding, FileNames, Options)
 
 % Run MSE pipeline for one strain on a sample from the MESO-SCOPE cruise. 
 
