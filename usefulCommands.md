@@ -10,17 +10,17 @@ sh Job_loop.sh
 
 #Downloading data from MIT server locally
 ## Copying a single file to a local directory
-scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:~/mse/data/output/FullSolution.mat ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/
+scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:~/mse_AMT/data/output/FullSolution.mat ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/
 
 ## Copying all results files to a local directory
-scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key -r jrcasey@eofe7.mit.edu:/nobackup1/jrcasey/. ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/MESO-SCOPE/mse_Results/
+scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key -r jrcasey@eofe7.mit.edu:/nobackup1/jrcasey/. ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/mse_Results/
 
 # Clean up scratch and home dir
 rm -r /nobackup1/jrcasey/*
 
 ### Clean up mse (while logged in)
-rm ~/mse/*.out
-rm ~/mse/*.err
+rm ~/mse_AMT/*.out
+rm ~/mse_AMT/*.err
 find . -name "matlab_crash*" -exec rm {} \;
 
 #### How many files?

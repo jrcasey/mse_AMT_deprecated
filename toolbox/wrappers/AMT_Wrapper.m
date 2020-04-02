@@ -9,7 +9,7 @@ cd ~/mse_AMT/
 %% Version
 version = strcat({'_v'},datestr(date,'yyyymmdd'))
 
-%% Version control and database paths
+%% Version control and database paths (save a copy of this to the server)
 FileNames = struct;
 % Current PanGEM
 FileNames.PanGEM_Path = 'data/GEM/PanGEM.mat';
@@ -34,7 +34,7 @@ FileNames.PigDB_fileName = 'data/db/AbsorptionDatabase.csv';
 % Destination for solution
 FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.mat');
 
-%% Gridding
+%% Gridding (save a copy of this to the server)
 Gridding = struct;
 % Stations
 % Gridding.stationsVec = 1:53;
@@ -45,7 +45,7 @@ Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
 Gridding.minZ = 5;
 Gridding.maxZ = 200;
-Gridding.intervalZ = 5;
+Gridding.intervalZ = 10;
 Gridding.depthVec = Gridding.minZ:Gridding.intervalZ:Gridding.maxZ;
 Gridding.nZ = numel(Gridding.depthVec);
 % Wavelength (nm)
