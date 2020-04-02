@@ -1,5 +1,5 @@
 #!/bin/bash
-START=1
+START=15361
 END=30720
 STEP=480
 SLEEP=600 #Just over 11 Minutes (in seconds)
@@ -21,6 +21,6 @@ matlab -nodesktop -nosplash -nojvm < toolbox/core/compile_AMT_subjobs.m
 # Clean up
 cd ~/
 find . -name "matlab_crash*" -exec rm {} \;
-rm ~/mse/*.out
-rm ~/mse/*.err
+rm ~/mse_AMT/*.out
+rm ~/mse_AMT/*.err
 rm -r /nobackup1/jrcasey/*
