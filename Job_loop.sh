@@ -10,18 +10,5 @@ for i in $(seq $START $STEP $END) ; do
     JEND=$[ $JSTART + $STEP -1 ] 
     echo "Submitting from ${JSTART} to ${JEND}"
     sbatch --array=${JSTART}-${JEND} -p sched_mit_darwin2 --time=12:00:00 job2.sh
-    echo ${SLURM_ARRAY_TASK_ID}
 	sleep $SLEEP
 done
-
-# Run post-processing
-cd ~/mse_AMT/
-module load mit/matlab/2019a
-matlab -nodesktop -nosplash -nojvm < toolbox/core/compile_AMT_subjobs.m
-
-# Clean up
-cd ~/
-find . -name "matlab_crash*" -exec rm {} \;
-rm ~/mse_AMT/*.out
-rm ~/mse_AMT/*.err
-# rm -r /nobackup1/jrcasey/*
