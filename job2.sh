@@ -6,10 +6,9 @@
 
 cd /home/jrcasey/mse_AMT/
 
-module load mit/matlab/2019a
 echo ${SLURM_ARRAY_TASK_ID}
 export SLURM_ARRAY_TASK_ID
-
+module load mit/matlab/2019a
 matlab -nodesktop -nosplash -nojvm < toolbox/wrappers/AMT_Wrapper.m
 #matlab -nodesktop -nosplash -nojvm < AMT_Wrapper2(${SLURM_ARRAY_TASK_ID})
 

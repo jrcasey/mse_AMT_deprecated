@@ -1,2 +1,2 @@
 # mse
-MSE application for Prochlorococcus using MESO-SCOPE dataset
+MSE application for Prochlorococcus using AMT13 cruise dataset.
