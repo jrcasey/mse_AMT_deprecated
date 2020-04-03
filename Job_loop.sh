@@ -1,6 +1,6 @@
 #!/bin/bash
-START=15361
-END=30720
+START=1
+END=480
 STEP=480
 SLEEP=600 #Just over 11 Minutes (in seconds)
 
@@ -23,4 +23,4 @@ cd ~/
 find . -name "matlab_crash*" -exec rm {} \;
 rm ~/mse_AMT/*.out
 rm ~/mse_AMT/*.err
-rm -r /nobackup1/jrcasey/*
+# rm -r /nobackup1/jrcasey/*

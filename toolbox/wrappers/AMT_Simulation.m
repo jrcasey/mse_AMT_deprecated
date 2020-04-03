@@ -119,7 +119,7 @@ nPigs = numel(PigsIncluded);
 PigDat = getSpecificAbsorption(PigDB,PigsIncluded,PigMW,Gridding.lambdaVec); %m2 mmol-1 bandwidth(nm)^-^1
 
 % Compute pigment absorption total
-a = 0.8 .* nansum(PigDat .* repmat(squeeze(IrrDat3(depth_ind,:,station_ind))',1,nPigs) .* Gridding.bandwidth); % mmol photons [mmol pig]-1 h-1
+a = nansum(PigDat .* repmat(squeeze(IrrDat3(depth_ind,:,station_ind))',1,nPigs) .* Gridding.bandwidth); % mmol photons [mmol pig]-1 h-1
 
 % Set up LP
 [physOptLP] = getPhysOptLP(StrMod3,Constraints, a, PigsIncluded, Options.maxIter_physOpt);
@@ -168,6 +168,19 @@ pigAbs = nan(numel(pigAbs),1);
 vOut = nan(numel(vOut),1);
 end
 
+% Store in results structure
+Solution = struct;
+Solution.Growth = growth;
+Solution.Fluxes = fluxes;
+Solution.BOF_coefs = BOF;
+Solution.TpOpt = n_opt;
+Solution.r_opt = r_opt;
+Solution.pigAbs = pigAbs;
+Solution.uptakeBounds = vOut;
+if Options.saveStrMod
+    Solution.StrMod = StrMod4;
+end
+
 % Store growth rates for each model version
 sol1 = solveLP(StrMod1,1); % Unacclimated, unconditioned
 if sol1.stat==1
@@ -198,20 +211,6 @@ if sol5.stat==1
     Solution.StrMod5_growth = -sol5.f.*TCorr;
 else
     Solution.StrMod1_growth = NaN;
-end
-
-
-% Store in results structure
-Solution = struct;
-Solution.Growth = growth;
-Solution.Fluxes = fluxes;
-Solution.BOF_coefs = BOF;
-Solution.TpOpt = n_opt;
-Solution.r_opt = r_opt;
-Solution.pigAbs = pigAbs;
-Solution.uptakeBounds = vOut;
-if Options.saveStrMod
-    Solution.StrMod = StrMod4;
 end
 
 % Save
