@@ -75,7 +75,7 @@ nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 % job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % avoiding maxjobid on slurm (comment out for normal runs)
-job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 28321;
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 28320;
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
