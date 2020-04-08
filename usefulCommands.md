@@ -8,6 +8,12 @@ sbatch --array=15-29 -p sched_mit_darwin2 --time=12:00:00 job2.sh
 ## Looping through intervals
 sh Job_loop.sh
 
+#### Cancel a job
+scancel -u jrcasey
+
+#### compress results for download
+zip -r All_Solutions.zip /nobackup1/jrcasey/_
+
 #Downloading data from MIT server locally
 ## Copying a single file to a local directory
 scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:~/mse_AMT/data/output/FullSolution.mat ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/
