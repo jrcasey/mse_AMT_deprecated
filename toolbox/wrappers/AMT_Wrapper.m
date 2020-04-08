@@ -22,7 +22,7 @@ FileNames.strainList_Path = 'data/db/strainList.mat';
 % Current OGTDat
 FileNames.OGTDat_Path = 'data/db/OGTDat.csv';
 % Cruise data
-FileNames.CruiseDB_filename = 'data/envData/AMT13_Gridded.csv';
+FileNames.CruiseDB_filename = 'data/envData/AMT13_Gridded2.csv';
 % HyperPro profiles
 FileNames.IrrDat_fileName = 'data/envData/IrrDat.mat';
 % TpDat path
@@ -43,7 +43,7 @@ Gridding.stationsVec = [2 4 5 7 8 9 10 12 15 17 19 21 22 24 26 ...
 
 Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
-Gridding.minZ = 5;
+Gridding.minZ = 10;
 Gridding.maxZ = 200;
 Gridding.intervalZ = 10;
 Gridding.depthVec = Gridding.minZ:Gridding.intervalZ:Gridding.maxZ;

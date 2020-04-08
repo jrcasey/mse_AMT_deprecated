@@ -47,7 +47,7 @@ end
 CruiseDat.NitratePlusNitrite = CruiseDat.NitratePlusNitrite .* 1000;
 CruiseDat.Nitrite = CruiseDat.Nitrite .* 1000;
 CruiseDat.Orthophosphate = CruiseDat.Orthophosphate .* 1000;
-CruiseDat.Ammonium = CruiseDat.Ammonium .* 1000;
+CruiseDat.Ammonium = 10 + (CruiseDat.Ammonium .* 1000);
 CruiseDat.Silicate = CruiseDat.Silicate .* 1000;
 % Compute nitrate
 CruiseDat.Nitrate = CruiseDat.NitratePlusNitrite - CruiseDat.Nitrite;

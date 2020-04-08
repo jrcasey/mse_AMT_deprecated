@@ -10,3 +10,17 @@ load PanGEM
 [FullSolution] = get_AMT_Results_server(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
 
 save('~/mse_AMT/data/output/FullSolution.mat','FullSolution');
+
+%% Post processing on local machine
+cd /Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/
+addpath(genpath('/Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/'))
+ResultsDirectory = '/Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/data/output/Solution_20200405/';
+load('data/output/Gridding.mat');
+load('data/output/FileNames.mat');
+load('data/output/CruiseData.mat');
+load('data/output/PanGEM.mat');
+
+
+[FullSolution] = get_AMT_Results_server(ResultsDirectory,PanGEM,FileNames,Gridding,CruiseData);
+
+save('data/output/FullSolution.mat','FullSolution');
