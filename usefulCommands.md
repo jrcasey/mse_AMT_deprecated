@@ -12,11 +12,11 @@ sh Job_loop.sh
 scancel -u jrcasey
 
 #### compress results for download
-zip -r All_Solutions.zip /nobackup1/jrcasey/_
+zip -r All_Solutions.zip /nobackup1/jrcasey/
 
 #Downloading data from MIT server locally
 ## Copying a single file to a local directory
-scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:~/mse_AMT/data/output/FullSolution.mat ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/
+scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key jrcasey@eofe7.mit.edu:~/mse_AMT/All_Solutions.zip ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/
 
 ## Copying all results files to a local directory
 scp -i /Users/jrcasey/eofe-cluster/linux/eofe-key -r jrcasey@eofe7.mit.edu:/nobackup1/jrcasey/. ~/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/mse_Results/
@@ -31,3 +31,6 @@ find . -name "matlab_crash*" -exec rm {} \;
 
 #### How many files?
 ls -f . | wc -l
+
+#### List top n files from sorted list
+ls -ltu | head -10
