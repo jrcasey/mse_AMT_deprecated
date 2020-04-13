@@ -1,7 +1,7 @@
 #!/bin/bash
 START=1
-END=500
-STEP=500
+END=15
+STEP=15
 SLEEP=600 #Just over 11 Minutes (in seconds)
 
 
