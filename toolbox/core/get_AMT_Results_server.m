@@ -34,16 +34,16 @@ if nFiles ~= Gridding.nStations .* Gridding.nZ .* Gridding.nStr
     error(msg)
 end
 
-% % If there are files missing, find out which and add some blanks
-% expectedFiles = 1:(Gridding.nStations .* Gridding.nZ .* Gridding.nStr);
-% for a = 1:nFiles
-%     tempFile = files(a).name;
-%     startInd = regexp(tempFile,'_');
-%     endInd = regexp(tempFile,'.mat');
-%     fileNo(a) = str2num(tempFile(startInd+1:endInd-1));
-% end
-% fileNo2 = sort(fileNo);
-% missingFileNo = setdiff(expectedFiles,fileNo2);
+% If there are files missing, find out which and add some blanks
+expectedFiles = 1:(Gridding.nStations .* Gridding.nZ .* Gridding.nStr);
+for a = 1:nFiles
+    tempFile = files(a).name;
+    startInd = regexp(tempFile,'_');
+    endInd = regexp(tempFile,'.mat');
+    fileNo(a) = str2num(tempFile(startInd+1:endInd-1));
+end
+fileNo2 = sort(fileNo);
+missingFileNo = setdiff(expectedFiles,fileNo2);
 
 
     
