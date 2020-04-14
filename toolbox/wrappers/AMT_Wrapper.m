@@ -37,9 +37,14 @@ FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.m
 %% Gridding (save a copy of this to the server)
 Gridding = struct;
 % Stations
-% Gridding.stationsVec = 1:53;
-Gridding.stationsVec = [2 4 5 7 8 9 10 12 15 17 19 21 22 24 26 ...
-    28 29 31 33 35 37 39 41 43 45 46 47 49 51 52 53 54];
+%Gridding.stationsVec = [2 4 5 7 8 9 10 12 15 17 19 21 22 24 26 ...
+%    28 29 31 33 35 37 39 41 43 45 46 47 49 51 52 53 54];
+Gridding.stationsVec =[{'A13_03'},{'A13_06'},{'A13_08'},{'A13_11'}, ...
+    {'A13_13'},{'A13_15'},{'A13_16'},{'A13_19'},{'A13_22'},{'A13_25'}, ...
+    {'A13_28'},{'A13_31'},{'A13_32'},{'A13_35'},{'A13_38'},{'A13_41'}, ...
+    {'A13_42'},{'A13_45'},{'A13_48'},{'A13_51'},{'A13_54'},{'A13_57'}, ...
+    {'A13_60'},{'A13_63'},{'A13_66'},{'A13_68'},{'A13_69'},{'A13_72'}, ...
+    {'A13_75'},{'A13_76'},{'A13_77'},{'A13_78'}];
 
 Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
@@ -75,14 +80,16 @@ nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 % job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % avoiding maxjobid on slurm (comment out for normal runs)
-job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
-load('data/output/missingFileNo.mat');
-job_array_idx = missingFileNo(job_array_idx_temp+500);
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
+% % avoiding maxjobid on slurm (comment out for normal runs)
+% job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
+% load('data/output/missingFileNo.mat');
+% job_array_idx = missingFileNo(job_array_idx_temp+500);
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
 %% Run simulation
-station = Gridding.stationsVec(i);
+station = Gridding.stationsVec{i};
 depth = Gridding.depthVec(j);
 strName = Gridding.strNameVec{k};
 

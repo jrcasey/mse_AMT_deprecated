@@ -54,8 +54,9 @@ CruiseData.PAR = squeeze(nansum(IrrDat3,2))';
 clear IrrDat IrrDat2
 
 %% Choose a station and depth
-station_ind = find(station==Gridding.stationsVec); % Station index
-station_name = strcat('Station_',num2str(station));
+%station_ind = find(station==Gridding.stationsVec); % Station index
+station_ind = find(strcmp(station,CruiseData.Stations))
+%station_name = strcat('Station_',num2str(station));
 [junk, depth_ind] = min(abs(depth-Gridding.depthVec));
 
 %% Optimal Transport
@@ -212,6 +213,7 @@ if sol5.stat==1
 else
     Solution.StrMod1_growth = NaN;
 end
+
 
 % Save
 if Options.saveSolution
