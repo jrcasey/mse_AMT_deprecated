@@ -211,7 +211,7 @@ sol5 = solveLP(StrMod4,1); % Tp and MM acclimated, Temperature corrected, condit
 if sol5.stat==1
     Solution.StrMod5_growth = -sol5.f.*TCorr;
 else
-    Solution.StrMod1_growth = NaN;
+    Solution.StrMod5_growth = NaN;
 end
 
 

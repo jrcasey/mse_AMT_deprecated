@@ -46,24 +46,68 @@ fileNo2 = sort(fileNo);
 missingFileNo = setdiff(expectedFiles,fileNo2);
 
 
-    
+%     
+% 
+% % Preallocate matrices to structure (need to load a solution to do this)
+% load Solution_1
+% for a = 1:Gridding.nStr
+%     FullSolution.(Gridding.strNameVec{a}).Growth = zeros(Gridding.nStations,Gridding.nZ);
+%     nFluxes = numel(Solution.Fluxes);
+%     FullSolution.(Gridding.strNameVec{a}).Fluxes = zeros(Gridding.nStations,Gridding.nZ,nFluxes);
+%     nBOF_coefs = numel(Solution.BOF_coefs);
+%     FullSolution.(Gridding.strNameVec{a}).BOF_coefs = zeros(Gridding.nStations,Gridding.nZ,nBOF_coefs);
+%     nTpOpt = numel(Solution.TpOpt);
+%     FullSolution.(Gridding.strNameVec{a}).TpOpt = zeros(Gridding.nStations,Gridding.nZ,nTpOpt);
+%     FullSolution.(Gridding.strNameVec{a}).r_opt = zeros(Gridding.nStations,Gridding.nZ);
+%     npigAbs = numel(Solution.pigAbs);
+%     FullSolution.(Gridding.strNameVec{a}).pigAbs = zeros(Gridding.nStations,Gridding.nZ,npigAbs);
+%     nuptakeBounds = numel(Solution.uptakeBounds);
+%     FullSolution.(Gridding.strNameVec{a}).uptakeBounds = zeros(Gridding.nStations,Gridding.nZ,nuptakeBounds);
+%     FullSolution.(Gridding.strNameVec{a}).runtime = zeros(Gridding.nStations,Gridding.nZ);
+% end
+% 
+% for a = 1:nFiles
+%     load(strcat(ResultsDirectory,files(a).name)); % Will be called Solution
+%     if isfield(Solution,'Fluxes')
+%     % get subjob number
+%     startChar = '_';
+%     endChar = '\.';
+%     startInd = regexp(files(a).name,startChar);
+%     endInd = regexp(files(a).name,endChar);
+%     job_array_idx = str2num(files(a).name(startInd+1:endInd-1));
+%     
+%     % get coordinates
+%     [i,j,k] = ind2sub(size(idxMat),job_array_idx);
+%     
+%     % Assign data to FullSolution
+%     FullSolution.(Solution.strName).Growth(i,j) = Solution.Growth;
+%     FullSolution.(Solution.strName).Fluxes(i,j,:) = Solution.Fluxes;
+%     FullSolution.(Solution.strName).BOF_coefs(i,j,:) = Solution.BOF_coefs;
+%     FullSolution.(Solution.strName).TpOpt(i,j,:) = Solution.TpOpt;
+%     FullSolution.(Solution.strName).r_opt(i,j) = Solution.r_opt;
+%     FullSolution.(Solution.strName).pigAbs(i,j,:) = Solution.pigAbs;
+%     FullSolution.(Solution.strName).uptakeBounds(i,j,:) = Solution.uptakeBounds;
+%     FullSolution.(Solution.strName).runtime(i,j) = Solution.runtime;
+%     
+%     end
+% end
 
 % Preallocate matrices to structure (need to load a solution to do this)
 load Solution_1
 for a = 1:Gridding.nStr
-    FullSolution.(Gridding.strNameVec{a}).Growth = zeros(Gridding.nStations,Gridding.nZ);
+    FullSolution.(Gridding.strNameVec{a}).Growth = zeros(Gridding.nZ,Gridding.nStations);
     nFluxes = numel(Solution.Fluxes);
-    FullSolution.(Gridding.strNameVec{a}).Fluxes = zeros(Gridding.nStations,Gridding.nZ,nFluxes);
+    FullSolution.(Gridding.strNameVec{a}).Fluxes = zeros(Gridding.nZ,Gridding.nStations,nFluxes);
     nBOF_coefs = numel(Solution.BOF_coefs);
-    FullSolution.(Gridding.strNameVec{a}).BOF_coefs = zeros(Gridding.nStations,Gridding.nZ,nBOF_coefs);
+    FullSolution.(Gridding.strNameVec{a}).BOF_coefs = zeros(Gridding.nZ,Gridding.nStations,nBOF_coefs);
     nTpOpt = numel(Solution.TpOpt);
-    FullSolution.(Gridding.strNameVec{a}).TpOpt = zeros(Gridding.nStations,Gridding.nZ,nTpOpt);
-    FullSolution.(Gridding.strNameVec{a}).r_opt = zeros(Gridding.nStations,Gridding.nZ);
+    FullSolution.(Gridding.strNameVec{a}).TpOpt = zeros(Gridding.nZ,Gridding.nStations,nTpOpt);
+    FullSolution.(Gridding.strNameVec{a}).r_opt = zeros(Gridding.nZ,Gridding.nStations);
     npigAbs = numel(Solution.pigAbs);
-    FullSolution.(Gridding.strNameVec{a}).pigAbs = zeros(Gridding.nStations,Gridding.nZ,npigAbs);
+    FullSolution.(Gridding.strNameVec{a}).pigAbs = zeros(Gridding.nZ,Gridding.nStations,npigAbs);
     nuptakeBounds = numel(Solution.uptakeBounds);
-    FullSolution.(Gridding.strNameVec{a}).uptakeBounds = zeros(Gridding.nStations,Gridding.nZ,nuptakeBounds);
-    FullSolution.(Gridding.strNameVec{a}).runtime = zeros(Gridding.nStations,Gridding.nZ);
+    FullSolution.(Gridding.strNameVec{a}).uptakeBounds = zeros(Gridding.nZ,Gridding.nStations,nuptakeBounds);
+    FullSolution.(Gridding.strNameVec{a}).runtime = zeros(Gridding.nZ,Gridding.nStations);
 end
 
 for a = 1:nFiles
@@ -80,14 +124,14 @@ for a = 1:nFiles
     [i,j,k] = ind2sub(size(idxMat),job_array_idx);
     
     % Assign data to FullSolution
-    FullSolution.(Solution.strName).Growth(i,j) = Solution.Growth;
-    FullSolution.(Solution.strName).Fluxes(i,j,:) = Solution.Fluxes;
-    FullSolution.(Solution.strName).BOF_coefs(i,j,:) = Solution.BOF_coefs;
-    FullSolution.(Solution.strName).TpOpt(i,j,:) = Solution.TpOpt;
-    FullSolution.(Solution.strName).r_opt(i,j) = Solution.r_opt;
-    FullSolution.(Solution.strName).pigAbs(i,j,:) = Solution.pigAbs;
-    FullSolution.(Solution.strName).uptakeBounds(i,j,:) = Solution.uptakeBounds;
-    FullSolution.(Solution.strName).runtime(i,j) = Solution.runtime;
+    FullSolution.(Solution.strName).Growth(j,i) = Solution.Growth;
+    FullSolution.(Solution.strName).Fluxes(j,i,:) = Solution.Fluxes;
+    FullSolution.(Solution.strName).BOF_coefs(j,i,:) = Solution.BOF_coefs;
+    FullSolution.(Solution.strName).TpOpt(j,i,:) = Solution.TpOpt;
+    FullSolution.(Solution.strName).r_opt(j,i) = Solution.r_opt;
+    FullSolution.(Solution.strName).pigAbs(j,i,:) = Solution.pigAbs;
+    FullSolution.(Solution.strName).uptakeBounds(j,i,:) = Solution.uptakeBounds;
+    FullSolution.(Solution.strName).runtime(j,i) = Solution.runtime;    
     end
 end
 

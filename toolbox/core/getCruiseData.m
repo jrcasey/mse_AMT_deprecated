@@ -1,5 +1,5 @@
 function CruiseDat = getCruiseData(CruiseDB, depthVec)
-%% Standardize MESO-SCOPE Data
+%% Standardize AMT Data
 
 Data = CruiseDB;
 % target fields (nutrients and cell counts for now)
