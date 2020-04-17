@@ -18,7 +18,7 @@ FileNames.orgDB_Path = 'data/db/orgDatabase.csv';
 % Current strain models
 FileNames.StrMod_Path = 'data/GEM/targStrMod3.mat';
 % List of strains to be analyzed
-FileNames.strainList_Path = 'data/db/strainList_short.mat';
+FileNames.strainList_Path = 'data/db/strainList.mat';
 % Current OGTDat
 FileNames.OGTDat_Path = 'data/db/OGTDat.csv';
 % Cruise data
