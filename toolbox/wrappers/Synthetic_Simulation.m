@@ -121,10 +121,13 @@ nPigs = numel(PigsIncluded);
 PigDat = getSpecificAbsorption(PigDB,PigsIncluded,PigMW,Gridding.lambdaVec); %m2 mmol-1 bandwidth(nm)^-^1
 
 % Compute pigment absorption total
-a = nansum(PigDat .* repmat(squeeze(IrrDat3(depth_ind,:,station_ind))',1,nPigs) .* Gridding.bandwidth); % mmol photons [mmol pig]-1 h-1
+if CruiseData.LightSwitch(station_ind,depth_ind)
+    % just picked a nice looking station
+    a = nansum(PigDat .* repmat(squeeze(IrrDat3(depth_ind,:,28))',1,nPigs) .* Gridding.bandwidth); % mmol photons [mmol pig]-1 h-1
+else
+    a = [1000 1000 1000 0];
+end
 
-% Comment out if natural light
-a = [1000 1000 1000 0];
 
 % Set up LP
 [physOptLP] = getPhysOptLP(StrMod3,Constraints, a, PigsIncluded, Options.maxIter_physOpt);
