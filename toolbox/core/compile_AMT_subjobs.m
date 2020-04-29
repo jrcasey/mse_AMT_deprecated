@@ -31,7 +31,7 @@ save('data/output/FullSolution.mat','FullSolution');
 cd /Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/
 addpath(genpath('/Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/'))
 %ResultsDirectory = '/Users/jrcasey/Documents/MATLAB/GitHub/mse_AMT/data/output/Solution_20200408/';
-ResultsDirectory = '/Users/jrcasey/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/Solution_20200427/';
+ResultsDirectory = '/Users/jrcasey/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/Solution_20200428/';
 
 load('data/output/Synthetic/Gridding.mat');
 load('data/output/Synthetic/FileNames.mat');
