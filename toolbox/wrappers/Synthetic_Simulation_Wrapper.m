@@ -38,7 +38,7 @@ FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.m
 Gridding = struct;
 % Stations
 Gridding.stationsVec =[{'PO4'},{'NH3'},{'NO2'},{'NO3'},{'Light'}];
-Gridding.stationsVec2 = [1 2 3 4];
+Gridding.stationsVec2 = [1 2 3 4 5];
 Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
 Gridding.minZ = 10;
