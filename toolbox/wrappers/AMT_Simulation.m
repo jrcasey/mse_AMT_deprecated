@@ -147,13 +147,15 @@ T = [273.15 + CruiseData.T(station_ind,depth_ind)];
 TCorr = TemperatureCorr(OGTDat,strName,T);
 
 %% Solve FBA and temporarily store output
-sol = solveLP(StrMod4,1);
+[sol hsSolOut] = solveLP(StrMod4,1);
 if sol.stat==1
     fluxes = sol.x.*TCorr;
     growth = -sol.f.*TCorr;
+    shadow = hsSolOut.y;
 else
     fluxes = zeros(numel(StrMod4.rxns),1);
     growth = 0;
+    shadow = zeros(numel(StrMod4.mets),1);
 end
 BOF = xOut;
 
@@ -173,6 +175,7 @@ end
 Solution = struct;
 Solution.Growth = growth;
 Solution.Fluxes = fluxes;
+Solution.Shadow = shadow;
 Solution.BOF_coefs = BOF;
 Solution.TpOpt = n_opt;
 Solution.r_opt = r_opt;

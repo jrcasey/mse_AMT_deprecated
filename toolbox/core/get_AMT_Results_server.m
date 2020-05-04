@@ -98,6 +98,8 @@ for a = 1:Gridding.nStr
     FullSolution.(Gridding.strNameVec{a}).Growth = zeros(Gridding.nZ,Gridding.nStations);
     nFluxes = numel(Solution.Fluxes);
     FullSolution.(Gridding.strNameVec{a}).Fluxes = zeros(Gridding.nZ,Gridding.nStations,nFluxes);
+    nShadow = numel(Solution.Shadow);
+    FullSolution.(Gridding.strNameVec{a}).Shadow = zeros(Gridding.nZ,Gridding.nStations,nShadow);
     nBOF_coefs = numel(Solution.BOF_coefs);
     FullSolution.(Gridding.strNameVec{a}).BOF_coefs = zeros(Gridding.nZ,Gridding.nStations,nBOF_coefs);
     nTpOpt = numel(Solution.TpOpt);
@@ -126,6 +128,7 @@ for a = 1:nFiles
     % Assign data to FullSolution
     FullSolution.(Solution.strName).Growth(j,i) = Solution.Growth;
     FullSolution.(Solution.strName).Fluxes(j,i,:) = Solution.Fluxes;
+    FullSolution.(Solution.strName).Shadow(j,i,:) = Solution.Shadow;
     FullSolution.(Solution.strName).BOF_coefs(j,i,:) = Solution.BOF_coefs;
     FullSolution.(Solution.strName).TpOpt(j,i,:) = Solution.TpOpt;
     FullSolution.(Solution.strName).r_opt(j,i) = Solution.r_opt;
