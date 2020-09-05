@@ -17,7 +17,7 @@ FileNames.PanGEM_Path = 'data/GEM/PanGEM.mat';
 % Organism database
 FileNames.orgDB_Path = 'data/db/orgDatabase.csv';
 % Current strain models
-FileNames.StrMod_Path = 'data/GEM/targStrMod3.mat';
+FileNames.StrMod_Path = 'data/GEM/StrMod.mat';
 % List of strains to be analyzed
 FileNames.strainList_Path = 'data/db/strainList.mat';
 % Current OGTDat
@@ -39,12 +39,17 @@ FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.m
 Gridding = struct;
 % Stations
 % Gridding.stationsVec = 1:53;
-Gridding.stationsVec = [2 4 5 7 8 9 10 12 15 17 19 21 22 24 26 ...
+Gridding.stationsVec =[{'A13_03'},{'A13_06'},{'A13_08'},{'A13_11'}, ...
+    {'A13_13'},{'A13_15'},{'A13_16'},{'A13_19'},{'A13_22'},{'A13_25'}, ...
+    {'A13_28'},{'A13_31'},{'A13_32'},{'A13_35'},{'A13_38'},{'A13_41'}, ...
+    {'A13_42'},{'A13_45'},{'A13_48'},{'A13_51'},{'A13_54'},{'A13_57'}, ...
+    {'A13_60'},{'A13_63'},{'A13_66'},{'A13_68'},{'A13_69'},{'A13_72'}, ...
+    {'A13_75'},{'A13_76'},{'A13_77'},{'A13_78'}];
+Gridding.stationsVec2 = [2 4 5 7 8 9 10 12 15 17 19 21 22 24 26 ...
     28 29 31 33 35 37 39 41 43 45 46 47 49 51 52 53 54];
-
 Gridding.nStations = numel(Gridding.stationsVec);
 % Depth (m)
-Gridding.minZ = 5;
+Gridding.minZ = 10;
 Gridding.maxZ = 200;
 Gridding.intervalZ = 10;
 Gridding.depthVec = Gridding.minZ:Gridding.intervalZ:Gridding.maxZ;

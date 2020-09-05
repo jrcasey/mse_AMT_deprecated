@@ -24,7 +24,7 @@ end
 strName = StrMod.id;
 fileName = 'data/db/orgDatabase.csv';
 orgDatabase = readtable(fileName,'ReadVariableNames',true,'Delimiter',',');
-orgInd = find(contains(orgDatabase.Strain,strName));
+orgInd = find(contains(orgDatabase.StrainName,strName));
 ecotype = orgDatabase.Ecotype{orgInd};
 ecotype_ind = find(strcmp(ecotype,Constraints.Properties.VariableNames));
 

@@ -110,6 +110,11 @@ for a = 1:Gridding.nStr
     nuptakeBounds = numel(Solution.uptakeBounds);
     FullSolution.(Gridding.strNameVec{a}).uptakeBounds = zeros(Gridding.nZ,Gridding.nStations,nuptakeBounds);
     FullSolution.(Gridding.strNameVec{a}).runtime = zeros(Gridding.nZ,Gridding.nStations);
+    FullSolution.(Gridding.strNameVec{a}).StrMod1_growth = zeros(Gridding.nZ,Gridding.nStations);
+    FullSolution.(Gridding.strNameVec{a}).StrMod2_growth = zeros(Gridding.nZ,Gridding.nStations);
+    FullSolution.(Gridding.strNameVec{a}).StrMod3_growth = zeros(Gridding.nZ,Gridding.nStations);
+    FullSolution.(Gridding.strNameVec{a}).StrMod4_growth = zeros(Gridding.nZ,Gridding.nStations);
+    FullSolution.(Gridding.strNameVec{a}).StrMod5_growth = zeros(Gridding.nZ,Gridding.nStations);
 end
 
 for a = 1:nFiles
@@ -134,7 +139,16 @@ for a = 1:nFiles
     FullSolution.(Solution.strName).r_opt(j,i) = Solution.r_opt;
     FullSolution.(Solution.strName).pigAbs(j,i,:) = Solution.pigAbs;
     FullSolution.(Solution.strName).uptakeBounds(j,i,:) = Solution.uptakeBounds;
-    FullSolution.(Solution.strName).runtime(j,i) = Solution.runtime;    
+    FullSolution.(Solution.strName).runtime(j,i) = Solution.runtime;
+    FullSolution.(Solution.strName).StrMod1_growth(j,i) = Solution.StrMod1_growth;
+    FullSolution.(Solution.strName).StrMod2_growth(j,i) = Solution.StrMod2_growth;
+    FullSolution.(Solution.strName).StrMod3_growth(j,i) = Solution.StrMod3_growth;
+    if isempty(Solution.StrMod4_growth)
+        FullSolution.(Solution.strName).StrMod4_growth(j,i) = NaN;
+    else
+        FullSolution.(Solution.strName).StrMod4_growth(j,i) = Solution.StrMod4_growth;
+    end
+    FullSolution.(Solution.strName).StrMod5_growth(j,i) = Solution.StrMod5_growth;
     end
 end
 

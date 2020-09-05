@@ -23,7 +23,7 @@ function [Solution] = AMT_Simulation(strName, station, depth, Gridding, FileName
 % StrainModelWrapper.m should be run for each new PanGEM version. Just
 % update the PanGEM path and the StrMods path.
 load(FileNames.StrMod_Path);
-StrMod1 = targStrMod3.(strName);
+StrMod1 = StrMod.(strName);
 StrMod1.id = strName;
 StrMod1.description = strcat('Un-acclimated strain model with no specified constraints or compositions - Prochlorococcus strain',{' '},strName);
 
@@ -40,8 +40,6 @@ CruiseData = getCruiseData(CruiseDB,Gridding.depthVec);
 % load and format a HyperPro profile
 load(FileNames.IrrDat_fileName);
 [IrrDat2] = standardizeIrr(IrrDat,Gridding.lambdaVec,Gridding.depthVec); %mmoles photons m-2 h-1 bandwidth*nm-1
-% IrrDat3a = reshape([IrrDat2{:}],numel(Gridding.depthVec),numel(Gridding.lambdaVec),Gridding.nStations);
-% CruiseData.PAR = squeeze(nansum(IrrDat3a,2))';
 IrrDat3 = reshape([IrrDat2{:}],numel(Gridding.depthVec),numel(Gridding.lambdaVec),numel(IrrDat2));
 CruiseData.PAR = squeeze(nansum(IrrDat3,2))';
 % % Temporary!! Normalize to local noon. For now just use the maximum Irr

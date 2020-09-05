@@ -632,7 +632,7 @@ else
                model.metCharge=cellfun(@toStr,raw(2:end,I(i)),'UniformOutput',false);
         end
     end
-
+    
     %Check that necessary fields are loaded (METID)
     if isempty(model.mets)
         EM='There must be a column named ID in the METS sheet';
@@ -709,7 +709,7 @@ else
     metsForParsing=model.mets; %This is because the equations are written with this
     I=cellfun(@any,metReplacement);
     model.mets(I)=metReplacement(I);
-
+    
     %If the metabolite name isn't set, replace it with the metabolite id
     I=~cellfun(@any,model.metNames);
     model.metNames(I)=model.mets(I);

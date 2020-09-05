@@ -30,7 +30,7 @@ strName = model.id;
 % Gather strain information
 fileName = 'data/db/orgDatabase.csv';
 orgDatabase = readtable(fileName,'ReadVariableNames',true,'Delimiter',',');
-orgInd = find(strcmp(orgDatabase.Strain,strName));
+orgInd = find(strcmp(orgDatabase.StrainName,strName));
 ecotype = orgDatabase.Ecotype{orgInd};
 
 % Get default cell size and weight
