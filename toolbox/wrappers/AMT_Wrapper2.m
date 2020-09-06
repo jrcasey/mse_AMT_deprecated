@@ -79,7 +79,7 @@ Gridding.nStr = numel(Gridding.strNameVec);
 idxMat = zeros(Gridding.nStations,Gridding.nZ,Gridding.nStr);
 nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
-job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 13800;
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 27600;
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
