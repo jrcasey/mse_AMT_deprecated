@@ -16,7 +16,7 @@ FileNames.PanGEM_Path = 'data/GEM/PanGEM.mat';
 % Organism database
 FileNames.orgDB_Path = 'data/db/orgDatabase.csv';
 % Current strain models
-FileNames.StrMod_Path = 'data/GEM/targStrMod3.mat';
+FileNames.StrMod_Path = 'data/GEM/StrMod.mat';
 % List of strains to be analyzed
 FileNames.strainList_Path = 'data/db/strainList.mat';
 % Current OGTDat
@@ -79,7 +79,7 @@ nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 % job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % avoiding maxjobid on slurm (comment out for normal runs)
-job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 15360;
+job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % % avoiding maxjobid on slurm (comment out for normal runs)
 % job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % load('data/output/missingFileNo.mat');
