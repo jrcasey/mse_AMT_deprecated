@@ -117,7 +117,8 @@ for a = 1:Gridding.nStr
     FullSolution.(Gridding.strNameVec{a}).StrMod5_growth = zeros(Gridding.nZ,Gridding.nStations);
 end
 
-for a = 1:nFiles
+%for a = 1:nFiles
+for a = 17523:nFiles
     load(strcat(ResultsDirectory,files(a).name)); % Will be called Solution
     if isfield(Solution,'Fluxes')
     % get subjob number

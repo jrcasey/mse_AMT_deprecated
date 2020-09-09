@@ -1,6 +1,8 @@
-%% AMT Cruise Simulation
+%% AMT Cruise Simulation - Local run
 % Runs and analyzes the MSE simulation for the AMT13 cruise.
-% Set up currently to run on Centos7
+% This is to run a few files locally (especially to fill in
+% corrupted/missing files from a large batch run. Save a mat file with
+% missing indices and loop through, saving to the local directory of solutions.  
 %% set root dir (for server only)
 %cd Documents/MATLAB/GitHub/mse_AMT/
 %addpath '/nfs/cnhlab001/cnh/projects/jrcasey/mse/test/mosek/9.1/toolbox/r2015a'	
@@ -33,6 +35,8 @@ FileNames.PhysOptPigOptConstraints_fileName = 'data/db/BOFConstraints.csv';
 FileNames.PigDB_fileName = 'data/db/AbsorptionDatabase.csv';
 % Destination for solution
 FileNames.destination_fileName = strcat('nobackups/jrcasey/Solution',version,'.mat');
+% Local destination prefix
+FileNames.local_destination_fileName = '/Users/jrcasey/Documents/MATLAB/CBIOMES/Data/Environmental_Data/Cruises/AMT13/tempSolution/'
 
 %% Gridding (save a copy of this to the server)
 Gridding = struct;
@@ -79,11 +83,12 @@ nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 % job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % avoiding maxjobid on slurm (comment out for normal runs)
-job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 27600;
+%job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 27600;
 % % avoiding maxjobid on slurm (comment out for normal runs)
-% job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
-% load('data/output/missingFileNo.mat');
-% job_array_idx = missingFileNo(job_array_idx_temp);
+
+load('data/output/missingFileNo.mat');
+for a = 1:numel(missingFileNo)
+job_array_idx = missingFileNo(a);
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
@@ -108,9 +113,9 @@ end
 %% Save solution
 
 % save local copy
-%save(cell2str(FileNames.destination_fileName),'FullSolution');
-
+save(strcat(FileNames.local_destination_fileName,'Solution_',mat2str(job_array_idx),'.mat'),'Solution');
+end
 % save on server
-save(strcat('/nobackup1/jrcasey/','Solution_',num2str(job_array_idx),'.mat'),'Solution');
+%save(strcat('/nobackup1/jrcasey/','Solution_',num2str(job_array_idx),'.mat'),'Solution');
 
 % change path to nobackup/jrcasey/ for saving the full output.

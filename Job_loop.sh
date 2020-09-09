@@ -1,8 +1,8 @@
 #!/bin/bash
 START=1
-END=2791
-STEP=466
-SLEEP=600 #Just over 11 Minutes (in seconds)
+END=14720
+STEP=460
+SLEEP=600 # 10 minutes
 
 
 for i in $(seq $START $STEP $END) ; do	
