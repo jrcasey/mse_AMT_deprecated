@@ -29,6 +29,13 @@ rm ~/mse_AMT/*.out
 rm ~/mse_AMT/*.err
 find . -name "matlab_crash*" -exec rm {} \;
 
+##### List too long?
+cd ~/
+find . -name "*.out" -print0 | xargs -0 rm
+find . -name "*.err" -print0 | xargs -0 rm
+cd ~/mse_AMT/
+find . -name "matlab_crash*" -exec rm {} \;
+
 #### How many files?
 ls -f . | wc -l
 
