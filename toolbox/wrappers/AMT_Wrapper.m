@@ -79,11 +79,11 @@ nIterations = size(idxMat,1).*size(idxMat,2).*size(idxMat,3);
 % get job array index
 % job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID'));
 % avoiding maxjobid on slurm (comment out for normal runs)
-job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 29440;
+% job_array_idx = str2num(getenv('SLURM_ARRAY_TASK_ID')) + 29440;
 % % avoiding maxjobid on slurm (comment out for normal runs)
-% job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
-% load('data/output/missingFileNo.mat');
-% job_array_idx = missingFileNo(job_array_idx_temp);
+ job_array_idx_temp = str2num(getenv('SLURM_ARRAY_TASK_ID'));
+ load('data/output/missingFileNo.mat');
+ job_array_idx = missingFileNo(job_array_idx_temp);
 % locate coordinates
 [i,j,k] = ind2sub(size(idxMat),job_array_idx);
 
