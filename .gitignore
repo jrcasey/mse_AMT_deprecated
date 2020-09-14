@@ -1,0 +1,4 @@
+# Ignore Full_Solution.mat (size over limits)
+Full_Solution.mat
+Full_Solution_L2.mat
+Full_Solution_L3.mat
